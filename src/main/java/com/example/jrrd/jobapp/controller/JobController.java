@@ -23,11 +23,11 @@ public class JobController {
 @Autowired
 private JobService service;
 
-  @Operation(summary = "Show home page")
-  @RequestMapping({"/", "home"})
-  public String home() {
-    return "home";
-  }
+  // @Operation(summary = "Show home page")
+  // @RequestMapping({"/", "home"})
+  // public String home() {
+  //   return "home";
+  // }
 
   @Operation(summary = "Show add job form")
   @RequestMapping("addjob")

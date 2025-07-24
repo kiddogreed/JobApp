@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 @CrossOrigin // Allow all origins for REST API
 @RestController
+
 @RequestMapping("/api/jobs")
 public class JobRestController {
 
@@ -45,7 +46,7 @@ public class JobRestController {
     @GetMapping("/{id}")
     public JobPost getJobById(@PathVariable int id) {
         return service.returnAllJobPosts().stream()
-                .filter(job -> job.getPostId() == id)
+                .filter(job -> job.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
@@ -55,7 +56,7 @@ public class JobRestController {
     public JobPost updateJob(@PathVariable int id, @RequestBody JobPost updatedJob) {
         List<JobPost> jobs = service.returnAllJobPosts();
         for (int i = 0; i < jobs.size(); i++) {
-            if (jobs.get(i).getPostId() == id) {
+            if (jobs.get(i).getId() == id) {
                 jobs.set(i, updatedJob);
                 return updatedJob;
             }
@@ -67,6 +68,6 @@ public class JobRestController {
     @DeleteMapping("/{id}")
     public void deleteJob(@PathVariable int id) {
         List<JobPost> jobs = service.returnAllJobPosts();
-        jobs.removeIf(job -> job.getPostId() == id);
+        jobs.removeIf(job -> job.getId() == id);
     }
 }

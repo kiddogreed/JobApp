@@ -18,7 +18,7 @@ class JobRepositoryTest {
     void testAddJobPost_IncreasesSize() {
         JobRepository repo = new JobRepository();
         int initialSize = repo.returnAllJobPosts().size();
-        JobPost newJob = new JobPost(100, "Test Role", "Test Desc", 1, List.of("Test Tech"));
+        JobPost newJob = new JobPost();
         repo.addJobPost(newJob);
         int newSize = repo.returnAllJobPosts().size();
         Assertions.assertEquals(initialSize + 1, newSize, "Job list size should increase by 1");
